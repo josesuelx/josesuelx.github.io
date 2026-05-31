@@ -6,20 +6,20 @@ import Buttons from '../components/Buttons.astro';
 
 ---
 <Layout>
-	<div style="display: flex; align-items: center; gap: 500px; margin-top: 50px; width: 90%;">
-		<div style="flex: 1; text-align: left;">
-			<h1 style="font-size: 2.5rem; margin: 0; text-align: left;">
+	<div class="index-container">
+		<div class="index-title">
+			<h1 style="font-size: 2.5rem; margin: 0;">
 					José Benavente
 			</h1>
-			<h2 id="role-text" style="margin: 0; text-align: left; color: #ff7b00; transition: opacity 0.5s ease-in-out;">
+			<h2 id="role-text" style="margin: 0; color: #ff7b00; transition: opacity 0.5s ease-in-out;">
 					Ingeniero civil industrial
 			</h2>
-			<p style="margin-top: 15px; color: #ccc;" text-align="justify">
+			<p class="index-description" style="margin-top: 15px; color: #ccc;">
 			Ingeniero civil industrial con formación en Bigdata y ciencia de datos, con experiencia en proyectos de análisis de datos, visualización y desarrollo de modelos predictivos. Apasionado por la tecnología y la innovación, siempre buscando nuevas formas de aplicar mis habilidades para resolver problemas complejos y generar valor a través de los datos.
 			</p>
 			<Buttons />
 		</div>
-		<Image src={profileImage} alt="Foto de José Benavente" width={300} height={300} style="border-radius: 50%; object-fit: cover;" />
+		<Image src={profileImage} alt="Foto de José Benavente" width={300} height={300} class="index-image" />
 
 	</div>
 
@@ -40,4 +40,49 @@ import Buttons from '../components/Buttons.astro';
 			}
 		}, 3000); // Cambia el texto cada 3000 milisegundos (3 segundos)
 	</script>
+
+	<style>
+		.index-container {
+			display: flex;
+			flex-direction: column-reverse; 
+			align-items: center;
+			gap: 40px;
+			margin: 50px auto 0;
+			width: 90%;
+		}
+
+		.index-title {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+
+		.index-description {
+			text-align: center; /* En móviles el texto se ve mejor centrado */
+		}
+
+		.index-image {
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		/* Breakpoint para pantallas medianas/grandes (Desktop) */
+		@media (min-width: 768px) {
+			.index-container {
+				flex-direction: row; /* Restaura la disposición lado a lado */
+				gap: 50px; 
+				justify-content: space-between;
+			}
+			.index-title {
+				align-items: flex-start;
+				text-align: left;
+			}
+			.index-description {
+				text-align: justify;
+				max-width: 600px; /* Limita el ancho máximo del texto para que no se estire demasiado */
+			}
+		}
+	</style>
 </Layout>
