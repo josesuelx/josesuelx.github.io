@@ -3,6 +3,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <div id='main-menu' class="navigation">
+    <h1 class="logo">JB</h1>
     <button id="menu-toggle" aria-label="Abrir menú">
         ☰
     </button>
@@ -15,20 +16,28 @@ const currentPath = Astro.url.pathname;
 </div>
 
 <style>
-    div {
+    .navigation {
         width: 100%;
         background-color: #33333388;
-        padding: 1rem 0;
+        padding: 1rem 2rem;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Permite que el menú móvil baje de línea cuando se expanda */
     }
 
-    div ul {
+    .logo {
+        margin: 0;
+        color: #f0f0f0;
+    }
+
+    .navigation ul {
         list-style: none;
         display: flex;
-        justify-content: center;
         gap: 2rem;
         margin: 0;
         padding: 0;
-        padding-right: 2rem;
     }
 
     #menu-toggle {
@@ -38,20 +47,19 @@ const currentPath = Astro.url.pathname;
         color: #f0f0f0;
         font-size: 1.8rem;
         cursor: pointer;
-        padding-right: 2rem;
     }
 
-    div a {
+    .navigation a {
         color: #f0f0f0;
         text-decoration: none;
         font-weight: bold;
     }
 
-    div a:hover {
+    .navigation a:hover {
         text-decoration: underline;
     }
 
-    div a.active {
+    .navigation a.active {
         border-bottom: 2px solid #f0f0f0;
         padding-bottom: 4px;
     }
@@ -59,20 +67,18 @@ const currentPath = Astro.url.pathname;
     @media (max-width: 768px) {
         #menu-toggle {
             display: block; 
-            width: 100%;
-            text-align: right;
         }
 
-        div ul {
-            display: none; /
+        .navigation ul {
+            display: none; 
             flex-direction: column;
             align-items: center;
-            padding-right: 0;
+            width: 100%;
             gap: 1rem;
             padding-top: 1rem;
         }
 
-        div ul.expanded {
+        .navigation ul.expanded {
             display: flex;
         }
     }

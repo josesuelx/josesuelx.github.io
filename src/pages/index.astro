@@ -3,9 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import profileImage from '../assets/foto-perfil.jpg';
 import Buttons from '../components/Buttons.astro';
+import backgroundImage from '../assets/background.jpeg';
 
 ---
 <Layout>
+<div class="index-background" style={`background-image: url('${backgroundImage.src}');`}>
 	<div class="index-container">
 		<div class="index-title">
 			<h1 style="font-size: 2.5rem; margin: 0;">
@@ -15,13 +17,14 @@ import Buttons from '../components/Buttons.astro';
 					Ingeniero civil industrial
 			</h2>
 			<p class="index-description" style="margin-top: 15px; color: #ccc;">
-			Ingeniero civil industrial con formación en Bigdata y ciencia de datos, con experiencia en proyectos de análisis de datos, visualización y desarrollo de modelos predictivos. Apasionado por la tecnología y la innovación, siempre buscando nuevas formas de aplicar mis habilidades para resolver problemas complejos y generar valor a través de los datos.
+			Ingeniero civil industrial con formación en bigdata y ciencia de datos, tengo experiencia en proyectos de análisis de datos, visualización y desarrollo de modelos predictivos. Apasionado por la tecnología y la innovación, siempre buscando nuevas formas de aplicar mis habilidades para resolver problemas complejos y generar valor a través de los datos.
 			</p>
 			<Buttons />
 		</div>
 		<Image src={profileImage} alt="Foto de José Benavente" width={300} height={300} class="index-image" />
-
 	</div>
+</div>
+
 
 	<script>
 		const roles = ["Ingeniero civil industrial", "Data Engineer", "Data Analyst", "Data Scientist"];
@@ -42,12 +45,23 @@ import Buttons from '../components/Buttons.astro';
 	</script>
 
 	<style>
+		.index-background {
+			width: 100%;
+			min-height: 50vh; /* Asegura que cubra al menos toda la pantalla */
+			display: flex;
+			justify-content: center;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
 		.index-container {
 			display: flex;
 			flex-direction: column-reverse; 
 			align-items: center;
-			gap: 40px;
-			margin: 50px auto 0;
+			gap: 0px;
+			padding: 20px;
+			margin: auto 0;
 			width: 90%;
 		}
 
@@ -83,6 +97,8 @@ import Buttons from '../components/Buttons.astro';
 				text-align: justify;
 				max-width: 600px; /* Limita el ancho máximo del texto para que no se estire demasiado */
 			}
+
+	
 		}
 	</style>
 </Layout>
